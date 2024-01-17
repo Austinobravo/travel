@@ -2,26 +2,81 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+body {
+  background: white
+}
+.slide-in {
+  animation: slide-in 0.5s ease-out;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+
+@keyframes slide-in {
+  0% {
+    transform: translateY(-20%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.input-slide-in {
+  animation: input-slide-in .3s ease-in-out none;
 }
+
+@keyframes input-slide-in{
+  0%{
+    opacity: 0
+  }
+  25%{
+    transform: translateX(20px);
+  }
+  50%{
+    transform: translateX(20px);
+
+  }
+  100%{
+    opacity: 1
+  }
+
+}
+.input-slide-out {
+  animation: input-slide-out 1s ease-in-out;
+}
+
+@keyframes input-slide-out{
+  0%{
+    transform: translateX(100%);
+    opacity: 0
+  }
+  25%{
+    transform: translateX(-20px);
+  }
+  50%{
+    transform: translateX(-10px);
+
+  }
+  100%{
+    transform: translateX(0);
+    opacity: 1
+  }
+
+}
+
+.menu-rotate{
+  animation: menu-rotate 1s ease-in-out
+}
+
+@keyframes menu-rotate{
+  0%{
+    transform: rotate(-200deg);
+    opacity: 0
+  }
+  100%{
+    transform: rotate(100deg);
+    opacity: 1
+  }
+}
+
+
