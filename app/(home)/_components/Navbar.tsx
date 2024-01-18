@@ -36,7 +36,7 @@ const Navbar = () => {
     const [isCurrentActive, setIsCurrrentActive] = React.useState(true)
   return (
     <>
-    <section >
+    <section className='fixed w-full z-50'>
         <div className='flex bg-amber-400 h-20 justify-between'>
             <div className='bg-black px-5 flex items-center'>
                 <Logo header={`/logo-no-background.svg`}/>
