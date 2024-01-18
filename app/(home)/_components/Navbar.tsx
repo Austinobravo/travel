@@ -39,7 +39,7 @@ const Navbar = () => {
     <section >
         <div className='flex bg-amber-400 h-20 justify-between'>
             <div className='bg-black px-5 flex items-center'>
-                <Logo />
+                <Logo header={`/logo-no-background.svg`}/>
             </div>
             <nav className='hidden md:flex justify-between items-center px-7 w-full text-xs'>
                 <div >
@@ -70,7 +70,7 @@ const Navbar = () => {
 
             </nav>
             {isToggleTracker &&
-                <div className={`absolute w-full mt-20 h-fit shadow-md px-12 py-7 ${isToggleTracker && 'slide-in' }`}>
+                <div className={`absolute w-full bg-white mt-20 h-fit shadow-md px-12 py-7 ${isToggleTracker && 'slide-in' }`}>
                     <Tracker/>
                 </div>
             }                      
@@ -89,7 +89,7 @@ const Navbar = () => {
                 </div>
             </div>
         </div>
-        <div className='md:hidden block text-sm h-screen'>
+        <div className={` absolute bg-white w-full z-10  md:hidden block text-sm ${isToggle && "h-full"}`}>
             {isToggle && 
                 <nav>
                     <ul className='flex flex-col space-y-2 divide-y-2 '>
