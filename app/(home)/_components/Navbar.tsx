@@ -46,12 +46,12 @@ const Navbar = () => {
                         <div>
                             <ul  className='flex space-x-2 items-center'>
                                 {leftItems.map((item, index)=> (
-                                <Link href={item.link}>
-                                    <li key={index} className='flex items-center ' onClick={()=>{item.name === "Track" && setIsToggleTracker(!isToggleTracker)}}>
-                                        {item.name} 
+                                    <li key={index} className='flex items-center '  onClick={()=>{item.name === "Track" && setIsToggleTracker(!isToggleTracker)}}>
+                                        <Link  href={item.link} >
+                                            {item.name} 
+                                        </Link>
                                         <span >{item.name === "Track" && (!isToggleTracker ? <ChevronDown size={20}/>: <ChevronUp size={20}/>)}</span>
                                     </li>
-                                </Link>
                                 ))}
                             </ul>
 
@@ -94,14 +94,14 @@ const Navbar = () => {
                 <nav>
                     <ul className='flex flex-col space-y-2 divide-y-2 '>
                         {leftItems.map((item, index) => (
-                            <>
-                            <Link href={item.link}>
-                                <li key={index} className='p-3 font-bold  flex items-center justify-between ' onClick={()=> {setIsCurrrent(index), setIsCurrrentActive(!isCurrentActive)}}>{item.name}
-                                    <span >{item.name === "Track" && (!isCurrentActive ? <ChevronDown size={30}/>: <ChevronUp size={30}/>)}</span>
-                                
+                            <div key={index} >
+                                <li className='p-3 font-bold  flex items-center justify-between' onClick={()=> {setIsCurrrent(index), item.name === "Track" && setIsCurrrentActive(!isCurrentActive)}}>
+                                    <Link href={item.link} onClick={()=> setIsToggle(!isToggle)}>
+                                        {item.name}
+                                    </Link>
+                                        <span >{item.name === "Track" && (!isCurrentActive ? <ChevronDown size={30}/>: <ChevronUp size={30}/>)}</span>
                                 </li>
 
-                            </Link>
 
                             {isCurrentActive && item.name === "Track" && isCurrent === index &&
                             <div className='divide-y-0 border-0 py-3 px-4'>
@@ -115,7 +115,7 @@ const Navbar = () => {
                                 </form>
                             </div>
                             }
-                            </>
+                            </div>
                         ))}
                     </ul>
 
