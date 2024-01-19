@@ -79,4 +79,20 @@ body {
   }
 }
 
+table{
+  width: 100%;
+  border-collapse:  collapse;
+  font-size: 0.875rem/* 14px */;
+  line-height: 1.25rem/* 20px */;
+}
+tr:nth-child(odd){
+  background-color: #eee;
+  border-radius: 100px;
+  border: 2px solid #eee;
+}
+td{
+  padding:5px 10px;
+}
+
+
 
