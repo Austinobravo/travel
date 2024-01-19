@@ -89,7 +89,7 @@ const Navbar = () => {
                 </div>
             </div>
         </div>
-        <div className={` absolute bg-white w-full z-10  md:hidden block text-sm ${isToggle && "h-full"}`}>
+        <div className={` absolute !bg-white w-full z-10  md:hidden block text-sm ${isToggle && "!h-screen"}`}>
             {isToggle && 
                 <nav>
                     <ul className='flex flex-col space-y-2 divide-y-2 '>
