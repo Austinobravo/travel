@@ -46,7 +46,7 @@ const Document = () => {
                 <div className='space-y-4 pb-4'>
                     <h2 className='font-bold text-3xl'>Document and Parcel Shipping</h2>
                     <p className='text-2xl  pb-2 '>For All Shippers</p>
-                    <hr className='w-[100px]'/>
+                    <hr className='w-[100px] border-2 border-amber-400'/>
                     <p className='text-base'>Learn about Travel – the undisputed global leader in international express shipping.</p>
                 </div>
                 <div className='bg-slate-200 py-10 px-5 space-y-5'>
@@ -78,7 +78,7 @@ const Document = () => {
                 <div className='space-y-4 pb-4'>
                     <h2 className='font-bold text-3xl'>Cargo Shipping</h2>
                     <p className='text-2xl  pb-2 '>Business Only</p>
-                    <hr className='w-[100px]'/>
+                    <hr className='w-[100px] border-2 border-amber-400'/>
                     <p className='text-base'>Discover shipping and logistics service options from DHL Global Forwarding.</p>
                 </div>
                 <div className='bg-slate-200 py-10 px-5 space-y-5'>

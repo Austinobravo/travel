@@ -9,11 +9,11 @@ import Tracker from './_innercomponents/Tracker'
 const leftItems = [
     {
         name: "Track",
-        link: ""
+        link: "/track"
     },
     {
         name: "Customer Service",
-        link: ""
+        link: "/customer-service"
     },
 
 ]
