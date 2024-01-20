@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} `}><Navbar/><div className='pt-20'>{children}</div><ScrollButton/><Footer/></body>
+      <body className={`${inter.className} `}>{children}<ScrollButton/></body>
     </html>
   )
 }

@@ -89,6 +89,7 @@ tr:nth-child(odd){
   background-color: #eee;
   border-radius: 100px;
   border: 2px solid #eee;
+  width: fit-content;
 }
 td{
   padding:5px 10px;
