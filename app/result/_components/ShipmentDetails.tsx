@@ -38,10 +38,6 @@ const ShipmentDetails = () => {
                                             <td>40</td>
                                         </tr>
                                         <tr>
-                                            <td>Container Number</td>
-                                            <td>TCNU4616200</td>
-                                        </tr>
-                                        <tr>
                                             <td>Shipment ID</td>
                                             <td>ABC123</td>
                                         </tr>
@@ -80,6 +76,46 @@ const ShipmentDetails = () => {
                                         <tr>
                                             <td>Place of Delivery</td>
                                             <td>Auckland</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div>
+                                <h3 className='font-bold text-xl py-5'>Contact details</h3>     
+                            </div>
+                            <div>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Sender's Name</td>
+                                            <td>Clinton Harold</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sender's Location</td>
+                                            <td>Oil mill base, New York</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Receiver's Name</td>
+                                            <td>Esther Harold</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Receiver's Location</td>
+                                            <td>Trenton,New York</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Receiver's Email</td>
+                                            <td>esther@gmail.com</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Receiver's Phone</td>
+                                            <td>+1 303 2901 93</td>
                                         </tr>
                                     </tbody>
                                 </table>

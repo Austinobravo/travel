@@ -1,6 +1,7 @@
 "use client"
 import { Phone, Ship, User } from 'lucide-react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 import React from 'react'
 const links = [
@@ -21,7 +22,8 @@ const links = [
     },
 ]
 const SidebarLinks = () => {
-    const [active, setActive] = React.useState("User")
+    // const [active, setActive] = React.useState("User")
+    const pathname = usePathname()
   return (
     <section>
         <div className='border-2 shadow'>
@@ -30,7 +32,7 @@ const SidebarLinks = () => {
                     const Icon = link.icon
 
                     return (
-                        <div key={index} className={`py-2 ${active === link.name && " text-white font-bold bg-amber-500 "}`} onClick={()=>{setActive(link.name)}}>
+                        <div key={index} className={`py-2 ${ pathname === link.href && " text-white font-bold bg-amber-500 "}`} >
                             <Link href={link.href} className={`flex items-center px-4 space-x-2  `}>
                                 <div>
                                     <Icon/>

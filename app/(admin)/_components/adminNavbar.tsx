@@ -1,28 +1,71 @@
+"use client"
 import { ChevronRight } from 'lucide-react'
+import { useSession } from 'next-auth/react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import React from 'react'
-const  items =[
-    
+const links = [
+    {
+        name: "User",
+        href: "/users"
+    },
+    {
+        name: "Shipment",
+        href: "/shipment"
+    },
+    {
+
+        name: "Support",
+        href: "/support"
+    },
+    {
+
+        name: "Edit Shipment",
+        href: "/edit_shipment"
+    },
+    {
+
+        name: "Add Shipment",
+        href: "/add_shipment"
+    },
 ]
 const AdminNavbar = () => {
+    const pathname = usePathname()
+    const {data:session} = useSession()
+
+    React.useEffect(()=>{
+        console.log("session", session?.user)
+
+    })
   return (
-    <section>
-        <div className='bg-blue-700 w-full items-center py-5 flex justify-between px-6'>
-            <div className='font-bold text-lg'>
+    <section className='fixed z-10 w-full'>
+        <div className='bg-blue-700 w-full items-center  py-5 flex justify-between md:px-6 px-1'>
+            <div className='font-bold md:text-lg'>
                 <p>Admin Dashboard</p>
             </div>
             <div>
-                <ul className='flex space-x-3 items-center'>
+                <ul className='flex flex-wrap md:flex-nowrap space-x-3 items-center'>
                     <li>Welcome, <span className='text-white font-bold'>Admin</span></li>
                     <li className='bg-red-500 py-1 px-3 text-white  text-xs rounded-md cursor-pointer'>Logout</li>
                 </ul>
             </div>
         </div>
         <div className='bg-blue-200 flex w-full py-2 items-center px-6'>
-            <p>Home</p>
-            <ChevronRight size={15}/>
-            <p className='font-bold cursor-pointer'>Dashboard</p>
-            <ChevronRight size={15}/>
-            <p className='font-bold cursor-pointer'>User</p>
+            <Link href="/dashboard">
+                <p className='font-bold cursor-pointer' >Dashboard</p>
+
+            </Link>
+            <p className='font-bold cursor-pointer'>
+                {links.map((link, index) => (
+                    <span key={index}>
+                        
+                        <Link href={link.href} className='flex items-center'>
+                            {pathname === link.href ? <><ChevronRight size={15}/> {link.name} </> : ""}
+                        </Link>
+
+                    </span>
+                ))}
+            </p>
         </div>
         
     </section>
