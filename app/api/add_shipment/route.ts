@@ -39,6 +39,8 @@ export async function POST(request: Request){
         final_destination
     } =  body
 
+
+
     try{
         await prisma.$transaction(async(prismadb) => {
             const customerData = {

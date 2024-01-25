@@ -25,12 +25,15 @@ export const getAllShipment = async () =>{
 export const getUniqueShipment = async (id:number) =>{
     try{
     if (typeof window === 'undefined') {
-        const allShipment = await prisma.customer.findUnique({
+        const allShipment = await prisma.customer.findMany({
           where: {
             id: id,
           },
+          include:{
+            locations: true
+          }
         });
-        return [allShipment];
+        return allShipment;
       } else {
         throw new Error('Prisma cannot be used in the browser environment.');
       }
@@ -45,9 +48,7 @@ export const getUniqueShipmentLocations = async (id:number) =>{
           where: {
             customerId: id,
           },
-          // orderBy:{
-          //   createdAt: "asc"
-          // },
+
         });
         return allLocation;
       } else {
@@ -74,6 +75,34 @@ export const deleteUniqueShipment = async (id:number) =>{
     throw error;
   }
 }
+export const deleteUniqueLocation = async (id:number) =>{
+  try{
+  if (typeof window === 'undefined') {
+
+      const lastShipment = await prisma.locations.findMany({
+        where: {
+          id:id,
+          final_destination: true,
+        },
+      });
+      
+      if(lastShipment.length > 0){
+        throw new Error("You can't delete this")
+      }else{
+        const allShipment = await prisma.locations.delete({
+          where: {
+            id: id,
+          },
+        });
+        return [allShipment];
+      }
+    } else {
+      throw new Error('Prisma cannot be used in the browser environment.');
+    }
+  } catch (error) {
+    throw error;
+  }
+}
 
 
 export const getUsers = async () =>{
@@ -93,13 +122,19 @@ export const getUsers = async () =>{
   }
 }
 
-export const getSearch = async (term:any) =>{
+export const getSearch = async (term:string) =>{
   try{
   if (typeof window === 'undefined') {
-      const search = await prisma.customer.findUnique({
-        where: {
-          shipment_id: term,
+    const search = await prisma.customer.findMany({
+      where: {
+        shipment_id: {
+                contains: term,
+              },
+          
         },
+        include:{
+          locations: true
+        }
       });
       return search;
     } else {

@@ -1,8 +1,8 @@
 "use client"
 import { ChevronRight } from 'lucide-react'
-import { useSession } from 'next-auth/react'
+import { signOut, useSession } from 'next-auth/react'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import React from 'react'
 const links = [
     {
@@ -32,7 +32,11 @@ const links = [
 const AdminNavbar = () => {
     const pathname = usePathname()
     const {data:session} = useSession()
-
+    const router = useRouter()
+    const logOut = async () => {
+        const SignOut = await signOut({redirect:false})
+        if(SignOut.url) router.push("/admin")
+    }
     React.useEffect(()=>{
         console.log("session", session?.user)
 
@@ -46,7 +50,7 @@ const AdminNavbar = () => {
             <div>
                 <ul className='flex flex-wrap md:flex-nowrap space-x-3 items-center'>
                     <li>Welcome, <span className='text-white font-bold'>Admin</span></li>
-                    <li className='bg-red-500 py-1 px-3 text-white  text-xs rounded-md cursor-pointer'>Logout</li>
+                    <li className='bg-red-500 py-1 px-3 text-white  text-xs rounded-md cursor-pointer' ><span onClick={logOut}>Logout</span></li>
                 </ul>
             </div>
         </div>

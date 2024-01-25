@@ -5,6 +5,8 @@ import { ChevronDown, ChevronUp, ChevronsDown, Globe, Menu, Pencil, X } from 'lu
 import Link from 'next/link'
 import SearchComponent from './_innercomponents/SearchComponent'
 import Tracker from './_innercomponents/Tracker'
+import { useRouter } from 'next/navigation'
+import toast from 'react-hot-toast'
 
 const leftItems = [
     {
@@ -34,6 +36,20 @@ const Navbar = () => {
     const [isToggle, setIsToggle] = React.useState(false)
     const [isCurrent, setIsCurrrent] = React.useState(0)
     const [isCurrentActive, setIsCurrrentActive] = React.useState(true)
+    const [searchQuery, setSearchQuery] = React.useState("")
+    const router = useRouter()
+    
+    const onSubmit = async (event:any)=>{
+        event.preventDefault()
+
+        try{
+        const encodedSearchQuery = encodeURI(searchQuery)
+        router.push(`/track?q=${encodedSearchQuery}`)
+
+        }catch(error){
+        toast.error("An error occured.")
+        }
+    }
   return (
     <>
     <section className='fixed w-full z-50'>
@@ -106,10 +122,10 @@ const Navbar = () => {
                             {isCurrentActive && item.name === "Track" && isCurrent === index &&
                             <div className='divide-y-0 border-0 py-3 px-4'>
                                 <h2 className='text-sm text-red-500 font-bold'>TRACK YOUR SHIPMENT</h2>
-                                <form>
+                                <form onSubmit={onSubmit}>
                                     <div className=' flex flex-col w-full space-y-1 border-2 p-1 rounded-md'>
                                         <label htmlFor=''/>
-                                        <input type="text" name="" id=""  className="outline-none border-0 w-full text-sm" placeholder='Enter your tracking number'/>
+                                        <input type="text"  id="search" value={searchQuery} onChange={(e)=> setSearchQuery(e.target.value)}  className="outline-none border-0 w-full text-sm" placeholder='Enter your tracking number'/>
                                         <button type='submit' className='bg-red-500 w-full text-white py-2 rounded-sm font-bold'>Track</button>
                                     </div>
                                 </form>

@@ -36,6 +36,7 @@ model Customer {
   estimated_departure_date DateTime
   estimated_arrival_date DateTime
   place_of_delivery String
+  shipment_final_destination Boolean @default(false)
 
   locations Locations[]
 
