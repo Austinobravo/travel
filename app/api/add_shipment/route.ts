@@ -63,7 +63,7 @@ export async function POST(request: Request){
             const newCustomer = await prismadb.customer.create({
                 data:customerData
             })
-
+            
             const LocationData = {
                 current_location:current_location,
                 info_on_current_location: info_on_shipment,

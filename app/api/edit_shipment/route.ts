@@ -83,19 +83,20 @@ export async function PATCH(request:Request ) {
         })
         
         const LocationData = {
-            id: locationId !== null ? locationId : undefined,
             current_location:current_location,
             info_on_current_location: info_on_shipment,
             final_destination:final_destination,
             customerId: newCustomer.id
         }
 
-        await prismadb.locations.upsert({
-          where:{
-            id:LocationData.id
-          },
-          create:LocationData,
-          update:LocationData
+              
+              await prismadb.locations.upsert({
+                where:{
+                  id: locationId !== null ? locationId : -1
+                
+              } ,
+              create:LocationData,
+              update:LocationData
         })
     })
 

@@ -50,7 +50,7 @@ model Locations{
   info_on_current_location String
   final_destination Boolean?
 
-  customerId Int
+  customerId Int 
   customer Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())

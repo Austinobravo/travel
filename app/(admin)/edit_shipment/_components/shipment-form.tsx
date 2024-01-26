@@ -40,7 +40,7 @@ const ShipmentForm = () => {
     const [locationData, setLocationData] = React.useState({
         id:null,
         current_location:"",
-        shipment_info:"",
+        info_on_current_location:"",
     })
 
     const onChange = (event:any) => {
@@ -100,7 +100,7 @@ const ShipmentForm = () => {
             estimated_arrival_date: formData.estimated_arrival_date,
             place_of_delivery: formData.place_of_delivery,
             current_location: locationData.current_location ,
-            info_on_shipment: locationData.shipment_info ,
+            info_on_shipment: locationData.info_on_current_location ,
             final_destination: final
         }
         try{
@@ -290,7 +290,7 @@ const ShipmentForm = () => {
                                 </div>
                                 <div className='flex flex-col w-full'>
                                     <label htmlFor='' className='font-bold flex items-center'><Bookmark size={15} className='mr-2'/> Info on the shipment </label>
-                                    <input type='text' name='shipment_info' value={locationData.shipment_info} onChange={onLocationChange} placeholder="Give info about the current location" className='border-2 py-2 px-3 w-full border-blue-500 focus:border-amber-500 outline-none rounded-md'/>
+                                    <input type='text' name='info_on_current_location' value={locationData.info_on_current_location} onChange={onLocationChange} placeholder="Give info about the current location" className='border-2 py-2 px-3 w-full border-blue-500 focus:border-amber-500 outline-none rounded-md'/>
                                     <small  className='text-xs font-medium'>This is the basic info about the shipment's current location.</small>
                                 </div>
                             </div>
@@ -322,16 +322,16 @@ const ShipmentForm = () => {
                                     </thead>
                                     <tbody >
                                         {trackingLocations.slice(trackingLocations.length -1).map((location, index)=> 
-                                        <>
-                                            {location.final_destination === true &&
                                                 <tr key={index}>
-                                                    <td>{location.current_location}</td>
-                                                    <td className='flex items-center'> Shipment Delivered </td>
-                                                    <td>{location.createdAt.toUTCString()}</td>
-                                                    <td className='text-green-500 font-bold'>Delivered</td>
+                                                    {location.final_destination === true &&
+                                                    <>
+                                                        <td>{location.current_location}</td>
+                                                        <td className='flex items-center'> Shipment Delivered </td>
+                                                        <td>{location.createdAt.toUTCString()}</td>
+                                                        <td className='text-green-500 font-bold'>Delivered</td>
+                                                    </>
+                                                    }
                                                 </tr>
-                                            }
-                                        </>
                                         )}
                                             {trackingLocations.slice(1).reverse().map((locations, index)=> (
                                                 <tr key={index}>
@@ -351,7 +351,7 @@ const ShipmentForm = () => {
                                                     <td className='flex items-center'> {locations.info_on_current_location}</td>
                                                     <td>{locations.createdAt.toUTCString()}</td>
                                                     <td className='text-red-500 font-bold'>Pick Up</td>
-                                                    <td className=' items-center md:flex hidden '> <Edit className='pr-2 w-7 h-7 cursor-pointer'/> Edit </td>
+                                                    <td className=' items-center md:flex hidden '> <Edit className='pr-2 w-7 h-7 cursor-pointer' onClick={()=> {setLocationData(locations), setIsLocationForm(true)}}/> Edit </td>
                                                     <td ><button type='button' className='bg-red-500 md:block hidden py-2 px-3 text-white rounded-md' onClick={()=>onDelete(locations.id)}>Delete</button></td>
                                                 </tr>
                                             ))}
