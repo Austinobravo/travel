@@ -86,7 +86,7 @@ const ShipmentDetails = () => {
 
                 ))}
                     <div className='text-xs font-bold w-full space-y-2  py-2 px-1'>
-                        <p><span className='text-red-500'>Origin</span> : {shipmentDetails[0]?.sender_location}</p>
+                        <p><span className='text-red-500'>Origin </span> : {shipmentDetails[0]?.sender_location}</p>
                         <hr/>
                         <p className='w-fit ml-auto'><span className='font-bold text-green-500'>Destination</span> : {shipmentDetails[0]?.receiver_location}</p>
                     </div>
