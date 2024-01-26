@@ -6,6 +6,7 @@ import ScrollButton from '@/components/Scroll-Button'
 import Footer from './(home)/_components/Footer'
 import ToastProvider from '@/components/providers/react-toast-provider'
 import SessionClientProvider from '@/components/providers/session-provider'
+import { Analytics } from '@vercel/analytics/react'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} `}><SessionClientProvider><ToastProvider/>{children}</SessionClientProvider><ScrollButton/></body>
+      <body className={`${inter.className} `}><SessionClientProvider><ToastProvider/>{children}</SessionClientProvider><ScrollButton/><Analytics/></body>
     </html>
   )
 }
