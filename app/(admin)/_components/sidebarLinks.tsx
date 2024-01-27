@@ -32,7 +32,7 @@ const SidebarLinks = () => {
                     const Icon = link.icon
 
                     return (
-                        <div key={index} className={`py-2 ${ pathname === link.href && " text-white font-bold bg-amber-500 "}`} >
+                        <div key={index} className={`py-2 ${ pathname.includes(link.href) && " text-white font-bold bg-amber-500 "}`} >
                             <Link href={link.href} className={`flex items-center px-4 space-x-2  `}>
                                 <div>
                                     <Icon/>

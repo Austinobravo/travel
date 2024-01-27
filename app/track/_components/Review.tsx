@@ -50,7 +50,7 @@ const Review =  () => {
                 <>
                 {searchItem.map((item, index)=> (
                     <div key={index} className={`bg-white mb-5 border-2 rounded-md border-black/50 shadow-md py-10 flex w-full`}>
-                        <div>
+                        <>
                             <div className='px-3'>
                                 <Info/>
                             </div>
@@ -79,7 +79,7 @@ const Review =  () => {
                                     </div>
             
                             </div>
-                        </div>
+                        </>
                     </div>
                     ))}
                 </>

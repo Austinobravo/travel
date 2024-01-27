@@ -37,10 +37,7 @@ const AdminNavbar = () => {
         const SignOut = await signOut({redirect:false})
         if(SignOut.url) router.push("/admin")
     }
-    React.useEffect(()=>{
-        console.log("session", session?.user)
 
-    })
   return (
     <section className='fixed z-10 w-full'>
         <div className='bg-blue-700 w-full items-center  py-5 flex justify-between md:px-6 px-1'>
@@ -49,7 +46,7 @@ const AdminNavbar = () => {
             </div>
             <div>
                 <ul className='flex flex-wrap md:flex-nowrap space-x-3 items-center'>
-                    <li>Welcome, <span className='text-white font-bold'>Admin</span></li>
+                    <li>Welcome <span className='text-white font-bold'>{session?.user.username.charAt(0).toUpperCase() }{session?.user.username.slice(1)}</span></li>
                     <li className='bg-red-500 py-1 px-3 text-white  text-xs rounded-md cursor-pointer' ><span onClick={logOut}>Logout</span></li>
                 </ul>
             </div>

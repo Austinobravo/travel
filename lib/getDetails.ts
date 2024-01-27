@@ -20,7 +20,7 @@ export const getAllShipment = async () =>{
 }catch(error){
     throw error
 }
-    
+
 }
 export const getUniqueShipment = async (id:number) =>{
     try{
@@ -87,7 +87,7 @@ export const deleteUniqueLocation = async (id:number) =>{
       });
       
       if(lastShipment.length > 0){
-        throw new Error("You can't delete this")
+        throw new Error("You can't delete the final destination")
       }else{
         const allShipment = await prisma.locations.delete({
           where: {
@@ -143,4 +143,58 @@ export const getSearch = async (term:string) =>{
   } catch (error) {
     throw error;
   }
+}
+
+
+export const getSupport = async () =>{
+  try{
+  if (typeof window === 'undefined') {
+      const allSupport = await prisma.support.findMany({
+        orderBy: {
+          createdAt: "desc",
+        },
+      });
+      return allSupport;
+    } else {
+      throw new Error('Prisma cannot be used in the browser environment.');
+    }
+  } catch (error) {
+    throw error;
+  }
+}
+
+export const deleteUniqueSupport = async (id:number) =>{
+  try{
+  if (typeof window === 'undefined') {
+      const support = await prisma.support.delete({
+        where: {
+          id: id,
+        },
+      });
+      return [support];
+    } else {
+      throw new Error('Prisma cannot be used in the browser environment.');
+    }
+  } catch (error) {
+    throw error;
+  }
+}
+
+
+
+export const getUniqueSupport = async (id:number) =>{
+    try{
+    if (typeof window === 'undefined') {
+        const support = await prisma.support.findMany({
+          where: {
+            id: id,
+          },
+        });
+        return support;
+      } else {
+        throw new Error('Prisma cannot be used in the browser environment.');
+      }
+    } catch (error) {
+      throw error;
+    }
 }

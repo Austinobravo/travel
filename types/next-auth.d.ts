@@ -3,4 +3,14 @@ declare module 'next-auth'{
     interface User{
         id: number
     }
+    
+}
+declare module 'next-auth'{
+    interface Session{
+        user:{
+            username: string
+            id:number
+           
+        }
+    }
 }

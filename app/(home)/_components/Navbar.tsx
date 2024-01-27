@@ -1,12 +1,13 @@
 "use client"
 import React from 'react'
 import Logo from './_innercomponents/Logo'
-import { ChevronDown, ChevronUp, ChevronsDown, Globe, Menu, Pencil, X } from 'lucide-react'
+import { ChevronDown, ChevronUp,  Globe, Menu, X } from 'lucide-react'
 import Link from 'next/link'
 import SearchComponent from './_innercomponents/SearchComponent'
 import Tracker from './_innercomponents/Tracker'
 import { useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
+import axios from 'axios'
 
 const leftItems = [
     {
@@ -37,6 +38,7 @@ const Navbar = () => {
     const [isCurrent, setIsCurrrent] = React.useState(0)
     const [isCurrentActive, setIsCurrrentActive] = React.useState(true)
     const [searchQuery, setSearchQuery] = React.useState("")
+    const [countries, setCountries] = React.useState<any[]>([])
     const router = useRouter()
     
     const onSubmit = async (event:any)=>{
@@ -50,6 +52,33 @@ const Navbar = () => {
         toast.error("An error occured.")
         }
     }
+    React.useEffect(()=> {
+
+        const fetchData = async () => {
+            await axios.get('https://restcountries.com/v3.1/all')
+            .then((response:any)=> {
+                const countryOptions = response.data.map((country:any)=>({
+                    label: country.name.common
+                }))
+                countryOptions.sort((a:any , b:any)=> a.label.localeCompare(b.label))
+                setCountries(countryOptions)
+            })
+        }
+        fetchData()
+    },[])
+
+    React.useEffect(()=> {
+        const handleResize = () => {
+            if(window.innerWidth >= 768){
+                setIsToggle(false)
+            }
+        }
+        window.addEventListener("resize", handleResize)
+
+        return () => {
+            window.removeEventListener("resize", handleResize)
+        }
+    }, [])
   return (
     <>
     <section className='fixed w-full z-50'>
@@ -78,8 +107,10 @@ const Navbar = () => {
                     <SearchComponent/>
                     <div className='flex items-center space-x-1'>
                         <Globe size={15}/>
-                        <select className='bg-transparent border-0 outline-none'>
-                            <option > Nigeria</option>
+                        <select className='bg-transparent border-0 w-24 outline-none'>
+                            {countries.map((country, index)=> (
+                                    <option key={index} className='px-2 w-full'>{country.label}</option>
+                                ))}
                         </select>
                     </div>
                 </div>
@@ -142,7 +173,9 @@ const Navbar = () => {
                     <div className='flex space-x-1 items-center py-3'>
                         <Globe size={15}/>
                         <select className='bg-transparent border-0 outline-none'>
-                            <option > Nigeria</option>
+                            {countries.map((country, index)=> (
+                                <option key={index}>{country.label}</option>
+                            ))}
                         </select>
                     </div>
                 </div>

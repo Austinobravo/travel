@@ -46,19 +46,33 @@ export const options:NextAuthOptions = {
         strategy: "jwt",
         maxAge: 24 * 60 * 60
     },
-    secret: process.env.NEXTAUTH_URL,
+    secret: process.env.NEXTAUTH_SECRET,
     debug: process.env.NODE_ENV === "development",
 
     callbacks: {
-        session: ({session, token}:any) => {
+        session: async ({session, token, user}) => {
             if(session.user){
                 session.user.id = token.id as any
+                session.user.username = token.username as string
             }
             return session
         },
-        jwt: ({user, token}:any) => {
-            token.id = user.id
-            return token
+        jwt: async  ({user, token}) => {
+                const dbUser = await prisma.admin.findUnique({
+                where: {
+                    username: token.username ? token.username : (user as any).username ,
+                },
+            })
+            if (!dbUser){
+                token.id = user.id
+                return token
+            }
+
+            return {
+                id: dbUser.id,
+                username: dbUser.username,
+                password: dbUser.password
+            }
         }
     }
 

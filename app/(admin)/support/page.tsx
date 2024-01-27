@@ -1,5 +1,6 @@
 import { Edit } from 'lucide-react'
 import React from 'react'
+import SupportTable from './_components/support-table'
 
 const page = () => {
   return (
@@ -17,52 +18,7 @@ const page = () => {
         </div>
         <div>
             <div>
-                <table >
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody >
-                        <tr>
-                            <td>Inquiry</td>
-                            <td className='flex items-center'> <Edit className='pr-2 w-7 h-7'/> Edit</td>
-                            <td><button className='bg-red-500 py-2 px-3 text-white rounded-md'>Delete</button></td>
-                            <td>Wednesday 12th June 2023</td>
-                        </tr>
-                        <tr>
-                        <td>Inquiry</td>
-                            <td className='flex items-center'> <Edit className='pr-2 w-7 h-7'/> Edit</td>
-                            <td><button className='bg-red-500 py-2 px-3 text-white rounded-md'>Delete</button></td>
-                            <td>Wednesday 12th June 2023</td>
-                        </tr>
-
-                    
-                        <tr>
-                        <td>Inquiry</td>
-                            <td className='flex items-center'> <Edit className='pr-2 w-7 h-7'/> Edit</td>
-                            <td><button className='bg-red-500 py-2 px-3 text-white rounded-md'>Delete</button></td>
-                            <td>Wednesday 12th June 2023</td>
-                        </tr>
-
-                        <tr>
-                        <td>Inquiry</td>
-                            <td className='flex items-center'> <Edit className='pr-2 w-7 h-7'/> Edit</td>
-                            <td><button className='bg-red-500 py-2 px-3 text-white rounded-md'>Delete</button></td>
-                            <td>Wednesday 12th June 2023</td>
-                        </tr>
-
-                        <tr>
-                        <td>Inquiry</td>
-                            <td className='flex items-center'> <Edit className='pr-2 w-7 h-7'/> Edit</td>
-                            <td><button className='bg-red-500 py-2 px-3 text-white rounded-md'>Delete</button></td>
-                            <td>Wednesday 12th June 2023</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <SupportTable/>
             </div>
         </div>
 

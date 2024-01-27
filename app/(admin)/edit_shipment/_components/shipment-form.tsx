@@ -60,8 +60,8 @@ const ShipmentForm = () => {
         if(verify){
             try{
                 await deleteUniqueLocation(id)
-                toast.success(`Deleted successfully. `)
                 router.refresh()
+                toast.success(`Deleted successfully. `)
             }catch(error:any){
                 toast.error(`${error}`)
             }
