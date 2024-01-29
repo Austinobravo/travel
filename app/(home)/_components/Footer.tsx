@@ -71,9 +71,9 @@ const Footer = () => {
                 <div>
                     <ul className='flex flex-wrap flex-col md:flex-row md:flex-nowrap gap-2  font-bold text-xs'>
                         {listLinks.map((link, index)=> (
-                            <Link href={link.link}>
-                                <li key={index}>{link.title}</li>
-                            </Link>
+                            <li >
+                                <Link key={index} href={link.link}>{link.title}</Link>
+                            </li>
                         ))}
                     </ul>
                 </div>
