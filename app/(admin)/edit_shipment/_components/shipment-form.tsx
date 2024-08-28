@@ -22,7 +22,7 @@ const ShipmentForm = () => {
         receiver_name: "",
         receiver_location: "",
         receiver_email: "",
-        receiver_phone: BigInt,
+        receiver_phone: BigInt(0),
         shipment_id: "",
         total_pieces: "",
         weight: "",
@@ -202,7 +202,7 @@ const ShipmentForm = () => {
                             </div>
                             <div className='flex flex-col w-full'>
                                 <label htmlFor='' className='font-bold'>Receiver's Phone</label>
-                                <input type='number' name='receiver_phone' value={formData.receiver_phone} onChange={onChange} placeholder="Receiver's Phone" className='border-2 py-2 px-3 w-full border-blue-500 focus:border-amber-500 outline-none rounded-md'/>
+                                <input type='number' name='receiver_phone' value={formData.receiver_phone.toString()} onChange={onChange} placeholder="Receiver's Phone" className='border-2 py-2 px-3 w-full border-blue-500 focus:border-amber-500 outline-none rounded-md'/>
                                 <small  className='text-xs font-medium'>This is the Receiver's Phone</small>
                             </div>
                         </div>
