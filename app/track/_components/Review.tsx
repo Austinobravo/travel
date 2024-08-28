@@ -73,7 +73,7 @@ const Review =  () => {
                                         </div>
                                         <Link href={`/result/${item.id}`}>
                                             <div className='flex justify-center items-center w-fit'>
-                                                <button className='border-red-500 border-2 py-1 w-fit  text-red-500 hover:bg-red-500 hover:text-white hover:border-0 px-4 rounded-md' >More </button>
+                                                <button className='border-red-500 border-2 py-1 w-fit  text-red-500 hover:bg-red-500 transition-all duration-700 delay-100 ease-in-out hover:text-white hover:border-0 px-4 rounded-md' >More </button>
                                             </div>
                                         </Link>
                                     </div>

@@ -23,6 +23,7 @@ const ShipmentTable = () => {
         const fetchData = async () =>{
             setIsLoading(true)
             const shipmentDetails = await getAllShipment()
+            console.log("ship", shipmentDetails)
             setShipment(shipmentDetails)
             setIsLoading(false)
         }
@@ -53,7 +54,7 @@ const ShipmentTable = () => {
                                             <td>{item.shipment_id}</td>
                                             <td> <Link href={`/edit_shipment/${item.id}`}  className='flex items-center'><Edit className='pr-2 w-7 h-7'/> Edit</Link> </td>
                                             <td ><button className='bg-red-500 py-2 px-3 text-white rounded-md' onClick={()=>onDelete(item.id)}>Delete</button></td>
-                                            <td>{item.created}</td>
+                                            <td>{item.createdAt.toUTCString()}</td>
                                         </tr>
         
                                     ))}

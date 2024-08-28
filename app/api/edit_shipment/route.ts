@@ -1,7 +1,18 @@
 import prisma from "@/lib/prisma";
+import { getCurrentUser } from "@/lib/session";
 import { NextResponse } from "next/server";
 
 export async function PATCH(request:Request ) {
+  const user = await getCurrentUser()
+
+    const existingUser = await prisma.admin.findUnique({
+        where:{
+            id: user?.id
+        }
+    })
+    if(!existingUser){
+        return 
+    }
 
   const body = await request.json()
   const {
@@ -48,7 +59,7 @@ export async function PATCH(request:Request ) {
 
 
       if (completedShipment) {
-        return NextResponse.json({"message": "This shipment has reached it's final destination."}, {status:500});
+        return NextResponse.json({"message": "This shipment has reached it's final destination."}, {status:400});
       }
 
 
@@ -63,7 +74,7 @@ export async function PATCH(request:Request ) {
             receiver_location: receiver_location,
             receiver_email:receiver_email,
             receiver_phone:+receiver_phone,
-            shipment_id:shipment_id,
+            shipment_id:shipment_id.toUpperCase(),
             total_pieces:total_pieces,
             weight:weight,
             volume: volume,

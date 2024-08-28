@@ -66,12 +66,12 @@ const Footer = () => {
         <div className='flex flex-wrap md:flex-nowrap px-10'>
             <div className='flex flex-col basis-2/3'>
                 <div className='py-5 w-fit'>
-                    <Logo footer='/logo-black.svg'/>
+                    {/* <Logo footer='/logo-black.svg'/> */}
                 </div>
                 <div>
                     <ul className='flex flex-wrap flex-col md:flex-row md:flex-nowrap gap-2  font-bold text-xs'>
                         {listLinks.map((link, index)=> (
-                            <li >
+                            <li key={link.title}>
                                 <Link key={index} href={link.link}>{link.title}</Link>
                             </li>
                         ))}

@@ -128,7 +128,7 @@ export const getSearch = async (term:string) =>{
     const search = await prisma.customer.findMany({
       where: {
         shipment_id: {
-                contains: term,
+                contains: term.toUpperCase(),
               },
           
         },
@@ -161,7 +161,7 @@ export const getSupport = async () =>{
   } catch (error) {
     throw error;
   }
-}
+} 
 
 export const deleteUniqueSupport = async (id:number) =>{
   try{
