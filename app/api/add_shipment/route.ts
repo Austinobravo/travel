@@ -51,8 +51,6 @@ export async function POST(request: Request){
         final_destination
     } =  body
 
-
-
     try{
         await prisma.$transaction(async(prismadb) => {
             const customerData = {
@@ -75,7 +73,7 @@ export async function POST(request: Request){
             const newCustomer = await prismadb.customer.create({
                 data:customerData
             })
-            
+
             const LocationData = {
                 current_location:current_location,
                 info_on_current_location: info_on_shipment,
@@ -88,6 +86,7 @@ export async function POST(request: Request){
         return NextResponse.json(shipment_id, {status:200})
 
     }catch(error){
+        console.log("error", error)
         return NextResponse.error()
     }
 }

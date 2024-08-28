@@ -31,7 +31,7 @@ model Customer {
   receiver_name String 
   receiver_location String 
   receiver_email String 
-  receiver_phone Int 
+  receiver_phone BigInt 
   shipment_id String @unique
   total_pieces String?
   weight String?
