@@ -22,7 +22,7 @@ const ShipmentForm = () => {
         receiver_name: "",
         receiver_location: "",
         receiver_email: "",
-        receiver_phone: 0,
+        receiver_phone: BigInt,
         shipment_id: "",
         total_pieces: "",
         weight: "",
